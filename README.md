@@ -10,5 +10,5 @@
 In the project directory, you can run:
 
 ```
-node .
+yarn start
 ```
