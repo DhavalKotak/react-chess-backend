@@ -1,10 +1,10 @@
 const app = require('express')()
 const { v4: uuidv4 } = require('uuid')
-const http = require('http').createServer(app)
+const http = require('http').Server(app)
 const PORT = process.env.PORT || 4000
 const io = require('socket.io')(http, {
 	cors: {
-	  origin: "http://localhost:3000",
+	  origin: "https://dhavalkotak.github.io",
 	  methods: ["GET", "POST"],
 	  credentials: false
 	}
