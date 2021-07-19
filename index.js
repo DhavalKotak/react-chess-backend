@@ -26,8 +26,14 @@ io.on('connection' , socket => {
 			console.log("user joined "+gameId)
 		}
 	})
-	socket.on('move' ,(gameId,board) => {
-		socket.to(gameId).emit('updateBoard' , board)
+	socket.on('move' ,async (gameId,board) => {
+		//flipping the board by subtracting the coordinates from the highest coordinates
+		board.forEach((piece) => {
+			piece.x = 7 - piece.x
+			piece.y = 7 - piece.y
+		})
+		const newBoard = await board
+		socket.to(gameId).emit('updateBoard' , newBoard)
 	})
 })
 http.listen(PORT, () => {
